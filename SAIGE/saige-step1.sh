@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#SBATCH --array=1-23
 #SBATCH --time=0-3:0
 #SBATCH --job-name=saige-step1
 #SBATCH --output=saige-step1.out
@@ -12,14 +13,14 @@
 
 module load softwares/R/4.2.0-gnu8
 
-Rscript step1_fitNULLGLMM.R \
-  --plinkFile=/home/aprneta/ped_flies_beforphase_prune \
-  --phenoFile=/path-to-your-phenotype-file/pheno.saige.txt \
+Rscript /home/aprneta/Saige/step1_fitNULLGLMM.R \
+  --plinkFile=/home/aprneta/ped_flies_beforphase_prune/LLATINO_chr${SLURM_ARRAY_TASK_ID}_beforePhase_prune \
+  --phenoFile=/home/aprneta/Saige/pheno.saige.txt \
   --phenoCol=pheno \
   --covarColList=age sex agesquare agesex PC1 PC2 PC3 PC4 PC5 PC6 PC7 PC8 PC9 PC10 \
   --qcovarColList=sex \
   --sampleIDColinphenoFile=IID \
   --traitType=binary \
-  --outputPrefix=/path-to-save-the-output/null-pheno \
+  --outputPrefix=/home/aprneta/Saige/chr${SLURM_ARRAY_TASK_ID}-pheno \
   --nThreads=8 \
   --LOCO=FALSE
