@@ -10,9 +10,9 @@
 #SBATCH --ntasks=1
 #SBATCH --mem-per-cpu=1G
 
-module load 
+module load softwares/R/4.2.0-gnu8
 
-step1_fitNULLGLMM.R \
+Rscript step1_fitNULLGLMM.R \
   --plinkFile=/path-to-your-plink-genotype-file/genotypes \
   --phenoFile=/path-to-your-phenotype-file/pheno.saige \
   --phenoCol=column1 \
