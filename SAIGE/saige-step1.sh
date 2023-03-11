@@ -15,9 +15,10 @@ module load softwares/R/4.2.0-gnu8
 Rscript step1_fitNULLGLMM.R \
   --plinkFile=/path-to-your-plink-genotype-file/genotypes \
   --phenoFile=/path-to-your-phenotype-file/pheno.saige \
-  --phenoCol=column1 \
-  --covarColList=sex,age,PC1,PC2,PC3,PC4,PC5,PC6,PC7,PC8,PC9,PC10 \
-  --sampleIDColinphenoFile=ID_1 \
+  --phenoCol=pheno \
+  --covarColList=age sex agesquare agesex PC1 PC2 PC3 PC4 PC5 PC6 PC7 PC8 PC9 PC10 \
+  --qcovarColList=sex \
+  --sampleIDColinphenoFile=IID \
   --traitType=binary \
   --outputPrefix=/path-to-save-the-output/null-pheno \
   --nThreads=8 \
