@@ -1,19 +1,18 @@
 #!/bin/bash
 
-#SBATCH --account=your-CC-account
-#SBATCH --time=3:00:00
+#SBATCH --time=0-3:0
 #SBATCH --job-name=saige-step1
-#SBATCH --output=slurm-%x.out
-#SBATCH --error=slurm-%x.err
-#SBATCH --mail-user=youremail@address.com
+#SBATCH --output=saige-step1.out
+#SBATCH --error=saige-step1.err
+#SBATCH --mail-user=andre.luchessi@ufrn.br
 #SBATCH --mail-type=ALL
 #SBATCH --cpus-per-task=8
 #SBATCH --ntasks=1
 #SBATCH --mem-per-cpu=1G
 
-module load singularity/3.5
+module load 
 
-singularity exec -B /home -B /project -B /scratch -B /localscratch /path-to-your-docker-image/saige.sif step1_fitNULLGLMM.R \
+step1_fitNULLGLMM.R \
   --plinkFile=/path-to-your-plink-genotype-file/genotypes \
   --phenoFile=/path-to-your-phenotype-file/pheno.saige \
   --phenoCol=column1 \
